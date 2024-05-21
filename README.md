@@ -41,7 +41,7 @@ The site already has some users registered.  You can see them by looking at the 
   ...
 ]
 
-This website should include the pages below
+This website includes the pages below
 
 1. A home page named index.html that highlights our "Stay Organized" web site.
 2. A page that allows you to view all of the ToDo tasks for a user by picking the user from a dropdown.  The page will be named user-todos.html
