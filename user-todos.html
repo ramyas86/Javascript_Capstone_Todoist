@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>TO-DO List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Vendor CSS Files -->
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylessheet">
+
+  <!-- Custom Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="index.html">Todoist<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>-->
+
+      <!-- .navbar -->
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
+          <li class="get-started-btn dropdown scrollto"><a href="#"><span>Organize</span> <i
+                class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="new-todo.html">Create Task</a></li>
+              <li><a href="user-todos.html">User tasks</a></li>
+              <li><a href="new_user.html">New User</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <main class="todo-container">
+    <div>
+      <br>
+      <h2>Select a user to view the tasks</h2>
+      <br>
+      <p style="text-align: center;"><select class="btn btn-danger dropdown-toggle" id="listUsers"
+          onchange="getTasksByUser(this.value)">
+          <option value="">Select user</option>
+        </select>
+      </p>
+      <br>
+    </div>
+
+    <div id="getTasksByUserName" class="table-responsive">
+      <table class="table table-striped" id="toDoTable">
+        <thead>
+          <tr id="tablerow">
+            <th scope="col">ID</th>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Completed</th>
+          </tr>
+        </thead>
+      </table>
+
+      <div class="addNewTodobtn">
+        <button class="btn btn-danger m-3" type="button" onclick="addAToDo()">Add a New ToDo</button>
+      </div>
+    </div>
+
+  </main>
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="mt-4">
+            <h2>Todoist<span>.</span></h2>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-contact mt-4">
+            <p>
+              Pluralsight <br>
+              Bengaluru 560076<br>
+              India
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-contact mt-4">
+
+            <strong>Phone:</strong>+91-8989558855<br>
+            <strong>Email:</strong> info@pluralsight.com<br>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-contact mt-4">
+
+            <div class="copyright">
+              &copy; Copyright <strong><span>Todoist</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+              Designed by <a href="https://www.pluralsight.com/">Pluralsight</a>
+            </div>
+
+          </div>
+          <div class="col-lg-4 col-md-6 footer-contact"></div>
+          <div class="social-links text-center text-md-end pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  <script>
+    // function to handle add new to do 
+    function addAToDo() {
+      location.replace("new-todo.html");
+    }
+
+    // fetch todos of a selected user and list them in a table
+    function getTasksByUser(userId) {
+      fetch('http://localhost:8083/api/todos/byuser/' + userId)
+        .then(response => response.json())
+        .then(toDos => {
+          // this returns a single course!
+          const table = document.getElementById('toDoTable');
+          while (table.rows.length > 1) {
+            table.deleteRow(1);
+          }
+
+          for (let i = 0; i < toDos.length; i++) {
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+            let cell5 = row.insertCell(4);
+            let cell6 = row.insertCell(5);
+
+            cell1.innerHTML = toDos[i].id;
+            cell2.innerHTML = toDos[i].category;
+            cell3.innerHTML = toDos[i].description;
+            cell4.innerHTML = toDos[i].deadline;
+            cell5.innerHTML = toDos[i].priority;
+            if (toDos[i].completed == true) {
+              // show checkmark in column 6
+              cell6.innerHTML = "<span class='check'>&#x2714;</span>"
+            } else {
+              //show crossmark in column 6
+              cell6.innerHTML = "<span class='cross'>&#x2718</span>"
+            }
+          }
+
+        })
+
+        .catch(error => {
+          // handle errors that occurred during the fetch request
+          console.error(error);
+        });
+    }
+  </script>
+  <script>
+    // fetches all users and places their names
+    try {
+
+      fetch("http://localhost:8083/api/users")
+        .then(response => {
+          if (response.status === 200)
+            return response.json();
+          else return "";
+        })
+
+        .then(users => { listUsers(users) });
+    }
+    catch (error) {
+      // TypeError: Failed to fetch
+      console.log('There was an error', error);
+    }
+
+    function listUsers(users) {
+      // find the value of the option selected
+      const listOfUsers = document.getElementById("listUsers");
+
+      for (let i = 0; i < users.length; i++) {
+
+        let theOption = new Option(users[i].name, users[i].id);
+
+        // append the option as a child of (inside) the 
+        // select element
+        listOfUsers.appendChild(theOption);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

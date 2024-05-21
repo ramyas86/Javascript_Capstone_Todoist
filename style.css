@@ -1,0 +1,95 @@
+@media screen and (max-width: 576px){
+
+}
+
+.container {
+  max-width: auto;
+}
+
+/* Styles for dropdown button in index.html*/
+.dropbtn {
+  background-color:dimgray;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+/* styles for new-todo.html*/
+body{ 
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(0,0,0,0.028124999999999956) 0%, rgba(255, 99, 71, 0.2) 100%);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.todo-container {
+  background:#444444;
+  margin: 0 auto;
+  border: 1px solid bisque;
+  margin-top: 100px;
+  color: white;
+  max-width: 1000px;
+}
+
+/* style for header in new-todo.html */
+#header{
+  margin: 5px;
+  font-size: 20px;
+  text-align: center;
+  background:none !important;
+}
+
+h2{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* setting color for checkmark and cross mark for completed column in the tasks table */
+.check {
+  color: green;
+}
+
+.cross {
+  color: red;
+}       
+/* styling for the table in user-todos.html */
+#toDoTable {
+  max-width: 1000px;
+  margin-left:auto;
+  margin-right: auto;
+}
+
