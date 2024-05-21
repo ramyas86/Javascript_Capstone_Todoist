@@ -14,7 +14,7 @@ body {
   margin-top: 100px;
   color: white;
   max-width: 1000px;
-  min-height: 400px;
+  min-height: 500px;
 }
 
 a {
@@ -56,6 +56,14 @@ h6 {
   max-width: 1000px;
   margin-left:auto;
   margin-right: auto;
+}
+
+#confirmationMessage {
+  color: green; 
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 500;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /*--------------------------------------------------------------

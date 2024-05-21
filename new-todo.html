@@ -60,6 +60,7 @@
 
   <!-- create a container for the todo list -->
   <div class="container container-fluid todo-container">
+    <p id ="confirmationMessage"></p>
     <!-- todo list header -->
     <div class="toDoHeader">
       <br>
@@ -68,6 +69,7 @@
     <br>
     <form class="row g-3 needs-validation" novalidate>
       <div class="col-md-12">
+        <input name="status" id="confirmId_status" value="1" hidden>
         <!-- <label for="listUsers" class="form-label">Select a user</label> -->
         <select class="form-control" id="listUsers" required>
           <option value="">Select user</option>
@@ -77,7 +79,6 @@
         </div>
       </div>
       <div class="col-md-12">
-        <!-- <label for="input-category" class="form-label">Category</label> -->
         <div class="input-group">
           <select class="form-control" id="input-category" required>
             <option value="">Select a category</option>
@@ -89,7 +90,6 @@
       </div>
 
       <div class="col-md-12">
-        <!-- <label for="input-description" class="form-label">Description</label> -->
         <div class="input-group">
           <textarea class="form-control" id="input-description" placeholder="Description" required></textarea>
           <div class="invalid-feedback">
@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <!-- <label for="input-deadline" class="form-label">Deadline</label> -->
+      
         <div class="input-group">
           <input type="text" class="form-control" id="input-deadline" onfocus="this.type='date'"
             placeholder="Provide a deadline" required>
@@ -108,7 +108,6 @@
         </div>
       </div>
       <div class="col-md-6">
-        <!-- <label for="input-priority" class="form-label">Select priority</label> -->
         <div class="input-group">
           <select class="form-select" id="input-priority" required>
             <option value="">Select priority</option>
@@ -122,20 +121,18 @@
         </div>
       </div>
 
-      <div class="m-3 text-center">
+      <div class="m-3" style="text-align: center;">
         <!-- add button  -->
         <button class="btn btn-danger" type="submit" onclick="addTask()">Add</button>
 
-        <!-- view tasks button  -->
-        <button style="text-align: center;" class="btn btn-danger" onclick="viewTasks()">View Tasks</button>
+        <!-- view tasks page  -->
+        <a href="user-todos.html"><button class="btn btn-danger" type="button">View Tasks</button></a>
       </div>
 
-      <div id="confirmationMessage">
-
-      </div>
+      
     </form>
   </div>
-
+  
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -197,6 +194,14 @@
     catch (error) {
       // TypeError: Failed to fetch
       console.log('There was an error', error);
+    }
+
+    // check the confirmation parameter and show message
+    const urlParams = new URLSearchParams(location.search);
+    // view all of the ToDo tasks for a user by picking the user from a dropdown.
+    if (urlParams.has("status") === true && urlParams.get("status") == "1") {
+      let confirmationMessage = document.getElementById("confirmationMessage");
+      confirmationMessage.innerHTML = "New task added";
     }
 
     function listUsers(users) {
@@ -271,9 +276,6 @@
         })
           .then(response => response.json())
           .then(json => {
-            // If the POST finishes successfully, display a message
-            let confirmationMessage = document.getElementById("confirmationMessage");
-            confirmationMessage.innerHTML = "New task added";
             console.log(JSON.stringify(json));
           });
       }
@@ -283,23 +285,8 @@
 
       }
     }
-
-    // function to view the tasks
-    function viewTasks() {
-      const urlParams = new URLSearchParams(location.search);
-      // view all of the ToDo tasks for a user by picking the user from a dropdown.
-      let id = -1;
-      if (urlParams.has("id") === true) {
-        id = urlParams.get("id")
-      }
-      console.log(id);
-      location.replace("user-todos.html?id=" + id);
-    }
-
-
   </script>
-
-
+  <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>
