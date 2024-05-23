@@ -42,8 +42,8 @@
       <!-- .navbar -->
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
-          <li class="get-started-btn dropdown scrollto"><a href="#"><span>Organize</span> <i
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li class="dropdown scrollto"><a href="#"><span>Organize</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="new-todo.html">Create Task</a></li>
@@ -57,82 +57,85 @@
     </div>
   </header><!-- End Header -->
 
-
-  <!-- create a container for the todo list -->
-  <div class="container container-fluid todo-container">
-    <p id ="confirmationMessage"></p>
-    <!-- todo list header -->
-    <div class="toDoHeader">
-      <br>
-      <h2>To Do List</h2>
+  <main>
+    <div>
+      <p id="confirmationMessage"></p>
     </div>
-    <br>
-    <form class="row g-3 needs-validation" novalidate>
-      <div class="col-md-12">
-        <input name="status" id="confirmId_status" value="1" hidden>
-        <!-- <label for="listUsers" class="form-label">Select a user</label> -->
-        <select class="form-control" id="listUsers" required>
-          <option value="">Select user</option>
-        </select>
-        <div class="invalid-feedback">
-          User selection is required
-        </div>
+    <!-- create a container for the todo list -->
+    <div class="container container-fluid todo-container">
+
+      <!-- todo list header -->
+      <div class="toDoHeader">
+        <br>
+        <h2>To Do List</h2>
       </div>
-      <div class="col-md-12">
-        <div class="input-group">
-          <select class="form-control" id="input-category" required>
-            <option value="">Select a category</option>
+      <br>
+      <form class="row g-3 needs-validation" novalidate>
+        <div class="col-md-12">
+          <input name="status" id="confirmId_status" value="1" hidden>
+          <!-- <label for="listUsers" class="form-label">Select a user</label> -->
+          <select class="form-control" id="listUsers" required>
+            <option value="">Select user</option>
           </select>
           <div class="invalid-feedback">
-            Category is required
+            User selection is required
           </div>
         </div>
-      </div>
-
-      <div class="col-md-12">
-        <div class="input-group">
-          <textarea class="form-control" id="input-description" placeholder="Description" required></textarea>
-          <div class="invalid-feedback">
-            Description is required
+        <div class="col-md-12">
+          <div class="input-group">
+            <select class="form-control" id="input-category" required>
+              <option value="">Select a category</option>
+            </select>
+            <div class="invalid-feedback">
+              Category is required
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-      
-        <div class="input-group">
-          <input type="text" class="form-control" id="input-deadline" onfocus="this.type='date'"
-            placeholder="Provide a deadline" required>
-          <div class="invalid-feedback">
-            Date is required
+
+        <div class="col-md-12">
+          <div class="input-group">
+            <textarea class="form-control" id="input-description" placeholder="Description" required></textarea>
+            <div class="invalid-feedback">
+              Description is required
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input-group">
-          <select class="form-select" id="input-priority" required>
-            <option value="">Select priority</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
-          <div class="invalid-feedback">
-            Please select a priority
+        <div class="col-md-6">
+
+          <div class="input-group">
+            <input type="text" class="form-control" id="input-deadline" onfocus="this.type='date'"
+              placeholder="Provide a deadline" required>
+            <div class="invalid-feedback">
+              Date is required
+            </div>
           </div>
         </div>
-      </div>
+        <div class="col-md-6">
+          <div class="input-group">
+            <select class="form-select" id="input-priority" required>
+              <option value="">Select priority</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a priority
+            </div>
+          </div>
+        </div>
 
-      <div class="m-3" style="text-align: center;">
-        <!-- add button  -->
-        <button class="btn btn-danger" type="submit" onclick="addTask()">Add</button>
+        <div class="m-3" style="text-align: center;">
+          <!-- add button  -->
+          <button class="btn btn-danger custombtn" type="submit" onclick="addTask()">Add</button>
 
-        <!-- view tasks page  -->
-        <a href="user-todos.html"><button class="btn btn-danger" type="button">View Tasks</button></a>
-      </div>
+          <!-- view tasks page  -->
+          <a href="user-todos.html"><button class="btn btn-danger custombtn" type="button">View Tasks</button></a>
+        </div>
 
-      
-    </form>
-  </div>
-  
+
+      </form>
+    </div>
+  </main>
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -142,20 +145,6 @@
           <div class="mt-4">
             <h2>Todoist<span>.</span></h2>
           </div>
-          <div class="col-lg-4 col-md-6 footer-contact mt-4">
-            <p>
-              Pluralsight <br>
-              Bengaluru 560076<br>
-              India
-            </p>
-          </div>
-          <div class="col-lg-4 col-md-6 footer-contact mt-4">
-
-            <strong>Phone:</strong>+91-8989558855<br>
-            <strong>Email:</strong> info@pluralsight.com<br>
-
-          </div>
-
           <div class="col-lg-4 col-md-6 footer-contact mt-4">
 
             <div class="copyright">

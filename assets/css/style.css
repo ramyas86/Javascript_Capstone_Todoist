@@ -8,11 +8,9 @@ body {
 }
 
 .todo-container {
-  background:#444444;
   margin: 0 auto;
-  border: 1px solid bisque;
   margin-top: 100px;
-  color: white;
+  color: black;
   max-width: 1000px;
   min-height: 500px;
 }
@@ -41,6 +39,14 @@ h6 {
   text-align: center;
 }
 
+.custombtn {
+  width: 150px !important;
+}
+
+.getTasksByUserName {
+  
+}
+
 /*--------------------------------------------------------------
 # styling for the table in user-todos.html. Setting color for checkmark and cross mark for completed column in the tasks table
 --------------------------------------------------------------*/
@@ -64,6 +70,10 @@ h6 {
   font-size: xx-large;
   font-weight: 500;
   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p#confirmationMessage{
+  margin-top: 100px;
 }
 
 /*--------------------------------------------------------------
@@ -865,7 +875,7 @@ section {
   color: #fff;
   font-size: 14px;
   background: #111111;
-  height: 40vh !important;
+  height: 20vh !important;
 }
 
 #footer .footer-top {
