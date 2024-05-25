@@ -12,7 +12,23 @@ body {
   margin-top: 100px;
   color: black;
   max-width: 1000px;
-  min-height: 500px;
+  min-height: 600px;
+}
+
+.newuser-container {
+  margin: 0 auto;
+  margin-top: 100px;
+  color: black;
+  max-width: 800px;
+  min-width: 200px;
+  min-height: 550px;
+}
+
+.img-container{
+  margin: 0 auto;
+  margin-top: 130px;
+  color: black;
+  max-width: 100%;
 }
 
 a {
@@ -32,7 +48,7 @@ h4,
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 .addNewTodobtn {
@@ -41,6 +57,10 @@ h6 {
 
 .custombtn {
   width: 150px !important;
+}
+
+.userselectbtn {
+  width: 200px !important;
 }
 
 .getTasksByUserName {
@@ -56,7 +76,7 @@ h6 {
 
 .cross {
   color: red;
-}       
+}
 
 #toDoTable {
   max-width: 1000px;
@@ -763,6 +783,7 @@ section {
 .contact .info-box h3 {
   font-size: 20px;
   color: #777777;
+  text-align: center;
   font-weight: 700;
   margin: 10px 0;
 }

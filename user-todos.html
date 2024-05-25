@@ -32,8 +32,7 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
-          <li class="dropdown scrollto"><a href="#"><span>Organize</span> <i
-                class="bi bi-chevron-down"></i></a>
+          <li class="dropdown scrollto"><a href="#"><span>Organize</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="new-todo.html">Create Task</a></li>
               <li><a href="user-todos.html">User tasks</a></li>
@@ -49,33 +48,29 @@
   <main class="todo-container">
     <div>
       <br>
-      <h2>Select a user to view the tasks</h2>
+      <h2 style="text-align: center;">Select a user to view the tasks</h2>
       <br>
-      <p style="text-align: center;"><select class="btn btn-danger dropdown-toggle" id="listUsers"
-          onchange="getTasksByUser(this.value)">
+      <div style="text-align: center;">
+        <select class="btn btn-primary dropdown-toggle userselectbtn" id="listUsers" onchange="getTasksByUser(this.value)">
           <option value="">Select user</option>
         </select>
-      </p>
+      </div>
       <br>
     </div>
 
     <div id="getTasksByUserName" class="table-responsive">
-      <table class="table table-striped mt-5" id="toDoTable">
+      <table class="table table-success mt-3" id="toDoTable">
         <thead>
           <tr id="tablerow">
-            <th scope="col">ID</th>
-            <th scope="col">Category</th>
-            <th scope="col">Description</th>
-            <th scope="col">Deadline</th>
-            <th scope="col">Priority</th>
-            <th scope="col">Completed</th>
+            <th scope="col" style="text-align: center;">ID</th>
+            <th scope="col" style="text-align: center;">Category</th>
+            <th scope="col" style="text-align: center;">Description</th>
+            <th scope="col" style="text-align: center;">Deadline</th>
+            <th scope="col" style="text-align: center;">Priority</th>
+            <th scope="col" style="text-align: center;">Completed</th>
           </tr>
         </thead>
       </table>
-
-      <div class="addNewTodobtn">
-        <button class="btn btn-danger m-3" type="button" onclick="addAToDo()">Add a New ToDo</button>
-      </div>
     </div>
 
   </main>
@@ -88,7 +83,7 @@
           <div class="mt-4">
             <h2>Todoist<span>.</span></h2>
           </div>
-          
+
 
           <div class="col-lg-4 col-md-6 footer-contact mt-4">
 
@@ -120,14 +115,15 @@
 
     // fetch todos of a selected user and list them in a table
     function getTasksByUser(userId) {
+      // Find the table and clear it
+      const table = document.getElementById('toDoTable');
+      while (table.rows.length > 1) {
+        table.deleteRow(1);
+      }
       fetch('http://localhost:8083/api/todos/byuser/' + userId)
         .then(response => response.json())
         .then(toDos => {
           // this returns a user!
-          const table = document.getElementById('toDoTable');
-          while (table.rows.length > 1) {
-            table.deleteRow(1);
-          }
 
           for (let i = 0; i < toDos.length; i++) {
             let row = table.insertRow(-1);
@@ -145,11 +141,17 @@
             cell5.innerHTML = toDos[i].priority;
             if (toDos[i].completed == true) {
               // show checkmark in column 6
-              cell6.innerHTML = "<span class='check'>&#x2714;</span>"
+              cell6.innerHTML = "<span class='check text-center'>&#x2714;</span>"
             } else {
               //show crossmark in column 6
-              cell6.innerHTML = "<span class='cross'>&#x2718</span>"
+              cell6.innerHTML = "<span class='cross text-center'>&#x2718</span>"
             }
+            cell1.style.textAlign = "center";
+            cell2.style.textAlign = "center";
+            cell3.style.textAlign = "center";
+            cell4.style.textAlign = "center";
+            cell5.style.textAlign = "center";
+            cell6.style.textAlign = "center";
           }
 
         })
@@ -192,7 +194,7 @@
       }
     }
   </script>
-
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>

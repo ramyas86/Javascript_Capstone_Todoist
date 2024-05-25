@@ -43,8 +43,7 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
-          <li class="dropdown scrollto"><a href="#"><span>Organize</span> <i
-                class="bi bi-chevron-down"></i></a>
+          <li class="dropdown scrollto"><a href="#"><span>Organize</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="new-todo.html">Create Task</a></li>
               <li><a href="user-todos.html">User tasks</a></li>
@@ -58,76 +57,85 @@
   </header><!-- End Header -->
 
   <main>
-    <div class="container container-fluid todo-container">
-      <form method="get" enctype="application/x-www-form-urlencoded" class="needs-validation" novalidate>
-        <br>
-        <h2>New User</h2>
-        <br>
-        <div>
-          <!-- <label for="name" class="form-label">Name</label> -->
-          <div class="input-group has-validation">
-            <input type="text" autocomplete="name" class="form-control" id="name" placeholder="Name" required>
-            <div class="invalid-feedback">
-              Your name is required.
-            </div>
-          </div>
+    <div class="container container-fluid">
+      <div class="row">
+        <div class="col-md-6 img-container">
+          <img class="img-fluid" src="to-do-list.png">
         </div>
-        <br>
-        <div>
-          <!-- <label for="username" class="form-label">User Name</label> -->
-          <div class="input-group has-validation">
-            <input type="text" autocomplete="username" class="form-control" id="username" placeholder="Username"
-              onfocusout="validate_userName(this.value)" required>
-            <div class="invalid-feedback">
-              Username is required.
-            </div>
-          </div>
-        </div>
-        <div id="userName_alert">
-        </div>
-        <br>
-        <div>
-          <!-- <label for="passwordInput" class="form-label">Password</label> -->
-          <div class="input-group has-validation">
-            <input type="password" class="form-control" id="passwordInput" placeholder="Password" required>
-            <div class="invalid-feedback">
-              Password is required.
-            </div>
-          </div>
-        </div>
-        <div>
-          <br>
-          <!-- <label for="confirmPasswordInput" class="form-label">Confirm Password</label> -->
-          <div class="input-group has-validation">
-            <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password"
-              required onkeyup="validate_password()">
-          </div>
-        </div>
+        <div class="col-md-6 newuser-container">
 
-        <!-- Password and Confirm Password is validated here-->
-        <div id="wrong_pass_alert">
-        </div>
-
-        <br>
-        <div class="col-12">
-          <div class="form-check">
-            <input type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-              Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">
-              You must agree before submitting.
+          <form method="get" enctype="application/x-www-form-urlencoded" class="needs-validation" novalidate>
+            <br>
+            <h2 style="text-align: center;">New User</h2>
+            <br>
+            <div>
+              <!-- <label for="name" class="form-label">Name</label> -->
+              <div class="input-group has-validation">
+                <input type="text" autocomplete="name" class="form-control" id="name" placeholder="Name" required>
+                <div class="invalid-feedback">
+                  Your name is required.
+                </div>
+              </div>
             </div>
-          </div>
+            <br>
+            <div>
+              <!-- <label for="username" class="form-label">User Name</label> -->
+              <div class="input-group has-validation">
+                <input type="text" autocomplete="username" class="form-control" id="username" placeholder="Username"
+                  onfocusout="validate_userName(this.value)" required>
+                <div class="invalid-feedback">
+                  Username is required.
+                </div>
+              </div>
+            </div>
+            <div id="userName_alert">
+            </div>
+            <br>
+            <div>
+              <!-- <label for="passwordInput" class="form-label">Password</label> -->
+              <div class="input-group has-validation">
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password" required>
+                <div class="invalid-feedback">
+                  Password is required.
+                </div>
+              </div>
+            </div>
+            <div>
+              <br>
+              <!-- <label for="confirmPasswordInput" class="form-label">Confirm Password</label> -->
+              <div class="input-group has-validation">
+                <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password"
+                  required onkeyup="validate_password()">
+              </div>
+            </div>
+
+            <!-- Password and Confirm Password is validated here-->
+            <div id="wrong_pass_alert">
+            </div>
+
+            <br>
+            <div class="col-12">
+              <div class="form-check">
+                <input type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                  Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                  You must agree before submitting.
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="col-12 text-center">
+              <button class="btn btn-primary" type="submit" onclick="addUser()">Create User</button>
+              <br>
+              <br>
+            </div>
+          </form>
+          <div id="userAddMsg"></div>
         </div>
-        <br>
-        <div class="col-12 text-center">
-          <button class="btn btn-danger" type="submit" onclick="addUser()">Submit form</button>
-          <br>
-          <br>
-        </div>
-      </form>
-      <div id="userAddMsg"></div>
+      </div>
+    </div>
     </div>
   </main>
 
@@ -268,6 +276,7 @@
   </script>
 
   <script type="text/javascript" src="script.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>
