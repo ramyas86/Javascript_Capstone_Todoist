@@ -23,7 +23,9 @@
 
   <!-- Custom Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <style>
+    th, td {text-align: center;}
+  </style>
 
 </head>
 
@@ -53,8 +55,8 @@
   </header><!-- End Header -->
 
   <main class="todo-container">
-    
-      
+
+
     </div>
     <div class="row">
       <div class="col-md-4">
@@ -65,30 +67,19 @@
           <br>
           <h2 style="text-align: center;">Select a user to view the tasks</h2>
           <br>
-        <div style="text-align: center;">
-          <select class="btn btn-primary dropdown-toggle userselectbtn" id="listUsers"
-            onchange="getTasksByUser(this.value)">
-            <option value="">Select user</option>
-          </select>
+          <div style="text-align: center;">
+            <select class="btn btn-primary dropdown-toggle userselectbtn" id="listUsers"
+              onchange="getTasksByUser(this.value)">
+              <option value="">Select user</option>
+            </select>
+          </div>
+          <br>
+          <div id="getTasksByUserName" style="min-height: 450px;" class="table-responsive">
+            <table class="table" id="toDoTable">
+            </table> 
+          </div>
         </div>
-        <br>
-    <div id="getTasksByUserName" style="min-height: 450px;" class="table-responsive">
-      <table class="table" id="toDoTable">
-        <thead>
-          <tr id="tablerow">
-            <th scope="col" style="text-align: center;">ID</th>
-            <th scope="col" style="text-align: center;">Category</th>
-            <th scope="col" style="text-align: center;">Description</th>
-            <th scope="col" style="text-align: center;">Deadline</th>
-            <th scope="col" style="text-align: center;">Priority</th>
-            <th scope="col" style="text-align: center;">Completed</th>
-            <th scope="col" style="text-align: center;">Delete</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    </div>
-  </div>
+      </div>
 
   </main>
   <!-- ======= Footer ======= -->
@@ -143,13 +134,37 @@
     function getTasksByUser(userId) {
       // Find the table and clear it
       const table = document.getElementById('toDoTable');
-      while (table.rows.length > 1) {
-        table.deleteRow(1);
+      while (table.rows.length > 0) {
+        table.deleteRow(0);
       }
+
       fetch('http://localhost:8083/api/todos/byuser/' + userId)
         .then(response => response.json())
         .then(toDos => {
           // this returns a user!
+          var header = table.createTHead();
+          var row = header.insertRow(0);
+
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = "<b>ID</b>";
+
+          var cell2 = row.insertCell(1);
+          cell2.innerHTML = "<b>Category</b>";
+
+          var cell3 = row.insertCell(2);
+          cell3.innerHTML = "<b>Description</b>";
+
+          var cell4 = row.insertCell(3);
+          cell4.innerHTML = "<b>Deadline</b>";
+
+          var cell5 = row.insertCell(4);
+          cell5.innerHTML = "<b>Priority</b>";
+
+          var cell6 = row.insertCell(5);
+          cell6.innerHTML = "<b>Completed</b>";
+
+          var cell7 = row.insertCell(6);
+          cell7.innerHTML = "<b>Delete</b>";
 
           for (let i = 0; i < toDos.length; i++) {
             let row = table.insertRow(-1);
@@ -175,14 +190,6 @@
             }
             cell7.innerHTML = '<i class="fa fa-trash" style="color:#e03a3c"></i>';
             cell7.setAttribute('onclick', `deleteTask(this,  ${toDos[i].id})`);
-
-            cell1.style.textAlign = "center";
-            cell2.style.textAlign = "center";
-            cell3.style.textAlign = "center";
-            cell4.style.textAlign = "center";
-            cell5.style.textAlign = "center";
-            cell6.style.textAlign = "center";
-            cell7.style.textAlign = "center";
           }
         })
 
