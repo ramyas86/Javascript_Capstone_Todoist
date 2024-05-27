@@ -42,9 +42,8 @@
       <!-- .navbar -->
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li class="dropdown scrollto"><a href="#"><span>Organize</span> <i
-                class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
+          <li class="dropdown scrollto"><a href="#"><span>Organize</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="new-todo.html">Create Task</a></li>
               <li><a href="user-todos.html">User tasks</a></li>
@@ -58,80 +57,83 @@
   </header><!-- End Header -->
 
   <main>
-    <div>
-      <p id="confirmationMessage"></p>
-    </div>
+    <div id="confirmationMessage"></div>
+
     <!-- create a container for the todo list -->
-    <div class="container container-fluid todo-container">
-
-      <!-- todo list header -->
-      <div class="toDoHeader">
-        <br>
-        <h2 style="text-align: center;">To Do List</h2>
+    
+    <div class="container container-fluid">
+      <div>
+        <h2 style="text-align: center; margin-top: 100px;" >View Tasks</h2>
       </div>
-      <br>
-      <form class="row g-3 needs-validation" novalidate>
-        <div class="col-md-12">
-          <input name="status" id="confirmId_status" value="1" hidden>
-          <!-- <label for="listUsers" class="form-label">Select a user</label> -->
-          <select class="form-control" id="listUsers" required>
-            <option value="">Select user</option>
-          </select>
-          <div class="invalid-feedback">
-            User selection is required
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="input-group">
-            <select class="form-control" id="input-category" required>
-              <option value="">Select a category</option>
-            </select>
-            <div class="invalid-feedback">
-              Category is required
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="input-group">
-            <textarea class="form-control" id="input-description" placeholder="Description" required></textarea>
-            <div class="invalid-feedback">
-              Description is required
-            </div>
-          </div>
-        </div>
+      <div class="row">
         <div class="col-md-6">
-
-          <div class="input-group">
-            <input type="text" class="form-control" id="input-deadline" onfocus="this.type='date'"
-              placeholder="Provide a deadline" required>
-            <div class="invalid-feedback">
-              Date is required
+          <img class="img-fluid" src="assets/img/isometric-time-management-concept-illustrated_52683-55534.avif">
+        </div>
+        <div class="col-md-6 newtodo-container">
+          <form class="row g-3 needs-validation mt-5" novalidate>
+            <div class="col-md-12">
+              <input name="status" id="confirmId_status" value="1" hidden>
+              <!-- <label for="listUsers" class="form-label">Select a user</label> -->
+              <select class="form-control border-primary" id="listUsers" required>
+                <option value="">Select user</option>
+              </select>
+              <div class="invalid-feedback">
+                User selection is required
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="input-group">
-            <select class="form-select" id="input-priority" required>
-              <option value="">Select priority</option>
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a priority
+            <div class="col-md-12">
+              <div class="input-group">
+                <select class="form-control border-primary" id="input-category" required>
+                  <option value="">Select a category</option>
+                </select>
+                <div class="invalid-feedback">
+                  Category is required
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="m-5" style="text-align: center;">
-          <!-- add button  -->
-          <button class="btn btn-primary custombtn" type="submit" onclick="addTask()">Add</button>
+            <div class="col-md-12">
+              <div class="input-group">
+                <textarea class="form-control border-primary" id="input-description" placeholder="Description" required></textarea>
+                <div class="invalid-feedback">
+                  Description is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
 
-          <!-- view tasks page  -->
-          <a href="user-todos.html"><button class="btn btn-primary custombtn" type="button">View Tasks</button></a>
+              <div class="input-group">
+                <input type="text" class="form-control border-primary" id="input-deadline" onfocus="this.type='date'"
+                  placeholder="Provide a deadline" required>
+                <div class="invalid-feedback">
+                  Date is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <select class="form-select border-primary" id="input-priority" required>
+                  <option value="">Select priority</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a priority
+                </div>
+              </div>
+            </div>
+
+            <div class="m-5" style="text-align: center;">
+              <!-- add button  -->
+              <button class="btn btn-primary custombtn" type="submit" onclick="addTask()">Add</button>
+
+              <!-- view tasks page  -->
+              <a href="user-todos.html"><button class="btn btn-primary custombtn" type="button">View Tasks</button></a>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   </main>
   <!-- ======= Footer ======= -->
@@ -187,8 +189,17 @@
     const urlParams = new URLSearchParams(location.search);
     // view all of the ToDo tasks for a user by picking the user from a dropdown.
     if (urlParams.has("status") === true && urlParams.get("status") == "1") {
-      let confirmationMessage = document.getElementById("confirmationMessage");
-      confirmationMessage.innerHTML = "New task added";
+
+      snackbar();
+      //let confirmationMessage = document.getElementById("confirmationMessage");
+      //confirmationMessage.innerHTML = "New task added";
+    }
+
+    function snackbar() {
+      var x = document.getElementById("confirmationMessage");
+      x.className = "show";
+      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+      confirmationMessage.innerHTML = "New task added"
     }
 
     function listUsers(users) {

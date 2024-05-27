@@ -58,20 +58,21 @@
 
   <main>
     <div class="container container-fluid">
+      <h2 style="text-align: center; margin-top: 100px;">New User</h2>
       <div class="row">
         <div class="col-md-6 img-container">
-          <img class="img-fluid" src="to-do-list.png">
+          <img class="img-fluid" src="assets/img/to-do-list.png">
         </div>
         <div class="col-md-6 newuser-container">
 
           <form method="get" enctype="application/x-www-form-urlencoded" class="needs-validation" novalidate>
             <br>
-            <h2 style="text-align: center;">New User</h2>
+            
             <br>
             <div>
               <!-- <label for="name" class="form-label">Name</label> -->
               <div class="input-group has-validation">
-                <input type="text" autocomplete="name" class="form-control" id="name" placeholder="Name" required>
+                <input type="text" autocomplete="name" class="form-control border-success" id="name" placeholder="Name" required>
                 <div class="invalid-feedback">
                   Your name is required.
                 </div>
@@ -81,7 +82,7 @@
             <div>
               <!-- <label for="username" class="form-label">User Name</label> -->
               <div class="input-group has-validation">
-                <input type="text" autocomplete="username" class="form-control" id="username" placeholder="Username"
+                <input type="text" autocomplete="username" class="form-control border-success" id="username" placeholder="Username"
                   onfocusout="validate_userName(this.value)" required>
                 <div class="invalid-feedback">
                   Username is required.
@@ -94,7 +95,7 @@
             <div>
               <!-- <label for="passwordInput" class="form-label">Password</label> -->
               <div class="input-group has-validation">
-                <input type="password" class="form-control" id="passwordInput" placeholder="Password" required>
+                <input type="password" class="form-control border-success" id="passwordInput" placeholder="Password" required>
                 <div class="invalid-feedback">
                   Password is required.
                 </div>
@@ -104,7 +105,7 @@
               <br>
               <!-- <label for="confirmPasswordInput" class="form-label">Confirm Password</label> -->
               <div class="input-group has-validation">
-                <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password"
+                <input type="password" class="form-control border-success" id="confirmPasswordInput" placeholder="Confirm Password"
                   required onkeyup="validate_password()">
               </div>
             </div>
@@ -255,7 +256,7 @@
             } else if (responseJson.available) {
               // Username is available
               document.getElementById('userName_alert').style.color = 'green';
-              document.getElementById('userName_alert').innerHTML = '🗹 Username is available';
+              document.getElementById('userName_alert').innerHTML = '&#9989; Username is available';
             } else {
               showUserNameError();
             }
@@ -271,7 +272,7 @@
     function showUserNameError() {
       // Choose another username
       document.getElementById('userName_alert').style.color = 'red';
-      document.getElementById('userName_alert').innerHTML = '☒ Choose another username';
+      document.getElementById('userName_alert').innerHTML = '&#10060; Username already exists! Choose another username';
     }
   </script>
 
