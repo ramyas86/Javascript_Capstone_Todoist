@@ -36,7 +36,7 @@ body {
 }
 
 a {
-  color: #e03a3c;
+  color: black;
   text-decoration: none;
 }
 
@@ -189,33 +189,6 @@ p#confirmationMessage{
 
 #header .logo img {
   max-height: 40px;
-}
-
-/*--------------------------------------------------------------
-# Get Started Button
---------------------------------------------------------------*/
-.get-started-btn {
-  margin-left: 30px;
-  background: #e03a3c;
-  color: #fff;
-  border-radius: 4px;
-
-  white-space: nowrap;
-  transition: 0.3s;
-  font-size: 14px;
-  font-weight: 600;
-  display: inline-block;
-}
-
-.get-started-btn:hover {
-  background: #111111;
-  color: #fff;
-}
-
-@media (max-width: 992px) {
-  .get-started-btn {
-    margin: 0 0 0 0;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -443,18 +416,18 @@ p#confirmationMessage{
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero {
-  width: 100%;
-  height: 100vh;
-  background: url("../img/hero-bg.jpg") top center no-repeat;
+/*#hero {
+  
+  background: url("../img/maxresdefault.jpg") center no-repeat;
   background-size: cover;
-  position: relative;
-  padding-top: 82px;
+  margin-top: 60px;
+  margin-left: 50px
+
+  
 }
 
 #hero:before {
   content: "";
-  background: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -475,7 +448,7 @@ p#confirmationMessage{
   font-size: 24px;
 }
 
-#hero .btn-get-started {
+ .btn-get-started {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -516,7 +489,7 @@ p#confirmationMessage{
     height: 120vh;
   }
 }
-
+*/
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -557,50 +530,19 @@ section {
 }
 
 .section-bg {
-  padding: 120px 0;
-  color: #fff;
+  padding: 20px 0;
+  color: black;
 }
 
 .section-bg:before {
   content: "";
-  background: #1b1b1b;
+  background: white;
   position: absolute;
   bottom: 60px;
   top: 60px;
   left: 0;
   right: 0;
   transform: skewY(-3deg);
-}
-
-/*--------------------------------------------------------------
-# Clients
---------------------------------------------------------------*/
-.clients .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.clients .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
-  opacity: 1;
-  border: 1px solid #e03a3c;
-}
-
-.clients .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #e03a3c;
-}
-
-.clients .swiper-slide img {
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: grayscale(100);
-}
-
-.clients .swiper-slide img:hover {
-  opacity: 1;
-  filter: none;
 }
 
 /*--------------------------------------------------------------
@@ -627,7 +569,7 @@ section {
 
 .about .content .about-btn {
   padding: 8px 30px 9px 30px;
-  color: #fff;
+  color: black;
   border-radius: 50px;
   transition: 0.3s;
   text-transform: uppercase;
@@ -688,13 +630,9 @@ section {
   margin-bottom: 20px;
   padding: 30px;
   border-radius: 6px;
-  background: #252525;
+  
   transition: 0.3s;
   position: relative;
-}
-
-.features .icon-box:hover {
-  background: #2b2b2b;
 }
 
 .features .icon-box i {
@@ -811,135 +749,6 @@ section {
   background-color: #e03a3c;
 }
 
-
-/*--------------------------------------------------------------
-# Contact
---------------------------------------------------------------*/
-.contact .info-box {
-  color: #444444;
-  text-align: center;
-  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-  padding: 30px 0 32px 0;
-  border-radius: 4px;
-}
-
-.contact .info-box i {
-  font-size: 32px;
-  color: #e03a3c;
-  border-radius: 50%;
-  padding: 8px;
-  border: 2px dotted #f8d4d5;
-}
-
-.contact .info-box h3 {
-  font-size: 20px;
-  color: #777777;
-  text-align: center;
-  font-weight: 700;
-  margin: 10px 0;
-}
-
-.contact .info-box p {
-  padding: 0;
-  line-height: 24px;
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-.contact .php-email-form {
-  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-  padding: 30px;
-  border-radius: 4px;
-}
-
-.contact .php-email-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .error-message br+br {
-  margin-top: 25px;
-}
-
-.contact .php-email-form .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-}
-
-.contact .php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  animation: animate-loading 1s linear infinite;
-}
-
-.contact .php-email-form .form-group {
-  margin-bottom: 25px;
-}
-
-.contact .php-email-form input,
-.contact .php-email-form textarea {
-  box-shadow: none;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
-  border-color: #111111;
-}
-
-.contact .php-email-form input {
-  padding: 10px 15px;
-}
-
-.contact .php-email-form textarea {
-  padding: 12px 15px;
-}
-
-.contact .php-email-form button[type=submit] {
-  background: #e03a3c;
-  border: 0;
-  padding: 10px 32px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 4px;
-}
-
-.contact .php-email-form button[type=submit]:hover {
-  background: #e35052;
-}
-
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -951,7 +760,7 @@ section {
 }
 
 #footer .footer-top {
-  background: #111111;
+  background: #4c84ac;
 }
 
 #footer .footer-top h2 {
@@ -975,7 +784,6 @@ section {
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #2b2b2b;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
