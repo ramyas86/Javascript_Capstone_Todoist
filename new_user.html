@@ -57,6 +57,7 @@
   </header><!-- End Header -->
 
   <main>
+    <div id="confirmationMessage"></div>
     <div class="container container-fluid">
       <h2 style="text-align: center; margin-top: 100px;">New User</h2>
       <div class="row">
@@ -67,12 +68,14 @@
 
           <form method="get" enctype="application/x-www-form-urlencoded" class="needs-validation" novalidate>
             <br>
-            
+
             <br>
             <div>
+              <input name="status" id="confirmId_status" value="1" hidden>
               <!-- <label for="name" class="form-label">Name</label> -->
               <div class="input-group has-validation">
-                <input type="text" autocomplete="name" class="form-control border-success" id="name" placeholder="Name" required>
+                <input type="text" autocomplete="name" class="form-control border-success" id="name" placeholder="Name"
+                  required>
                 <div class="invalid-feedback">
                   Your name is required.
                 </div>
@@ -82,8 +85,8 @@
             <div>
               <!-- <label for="username" class="form-label">User Name</label> -->
               <div class="input-group has-validation">
-                <input type="text" autocomplete="username" class="form-control border-success" id="username" placeholder="Username"
-                  onfocusout="validate_userName(this.value)" required>
+                <input type="text" autocomplete="username" class="form-control border-success" id="username"
+                  placeholder="Username" onfocusout="validate_userName(this.value)" required>
                 <div class="invalid-feedback">
                   Username is required.
                 </div>
@@ -95,7 +98,8 @@
             <div>
               <!-- <label for="passwordInput" class="form-label">Password</label> -->
               <div class="input-group has-validation">
-                <input type="password" class="form-control border-success" id="passwordInput" placeholder="Password" required>
+                <input type="password" class="form-control border-success" id="passwordInput" placeholder="Password"
+                  required>
                 <div class="invalid-feedback">
                   Password is required.
                 </div>
@@ -105,8 +109,8 @@
               <br>
               <!-- <label for="confirmPasswordInput" class="form-label">Confirm Password</label> -->
               <div class="input-group has-validation">
-                <input type="password" class="form-control border-success" id="confirmPasswordInput" placeholder="Confirm Password"
-                  required onkeyup="validate_password()">
+                <input type="password" class="form-control border-success" id="confirmPasswordInput"
+                  placeholder="Confirm Password" required onkeyup="validate_password()">
               </div>
             </div>
 
@@ -239,9 +243,9 @@
               showUserNameError();
             } else if (response.status === 201) {
               // User is sucessfully created
-              console.log(`User is added successfully`);
-              document.getElementById('userAddMsg').style.color = 'green';
-              alert(`User is added successfully`);
+              //console.log(`User is added successfully`);
+              //document.getElementById('userAddMsg').style.color = 'green';
+              //alert(`User is added successfully`);
             }
           })
       }
@@ -250,6 +254,19 @@
         console.log('There was an error', error);
 
       }
+    }
+
+    const urlParams = new URLSearchParams(location.search);
+    // view all of the ToDo tasks for a user by picking the user from a dropdown.
+    if (urlParams.has("status") === true && urlParams.get("status") == "1") {
+      snackbar();
+    }
+
+    function snackbar() {
+      var x = document.getElementById("confirmationMessage");
+      x.className = "show";
+      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+      confirmationMessage.innerHTML = "User is successfully created"
     }
 
     function validate_userName(userName) {
